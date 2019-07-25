@@ -1,6 +1,6 @@
 variable "actions" {
   description = "List of actions what should be executed"
-  type = list(string)
+  type        = list(string)
 }
 variable "function_name" {
   type = string
@@ -15,48 +15,48 @@ variable "tags" {
 }
 
 variable "errors_threshold" {
-  type = number
+  type    = number
   default = 1
 }
 
 variable "errors_evaluation_periods" {
-  type = number
+  type    = number
   default = 1
 }
 
 variable "errors_period" {
-  type = number
+  type    = number
   default = 60
 }
 
 
 variable "duration_minimum_threshold" {
-  type = number
+  type    = number
   default = 0
 }
 
 variable "duration_minimum_evaluation_periods" {
-  type = number
+  type    = number
   default = 1
 }
 
 variable "duration_minimum_period" {
-  type = number
+  type    = number
   default = 60
 }
 
 
 variable "duration_maximum_threshold" {
-  type = number
+  type    = number
   default = 30
 }
 
 variable "duration_maximum_evaluation_periods" {
-  type = number
+  type    = number
   default = 1
 }
 
 variable "duration_maximum_period" {
-  type = number
+  type    = number
   default = 60
 }
