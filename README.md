@@ -1,5 +1,5 @@
 # terraform-lambda-alarms
-Terraform module to automate creating lambda alrams
+Terraform module to automate creating lambda alarms
 
 ## Example usage
 ```terraform
