@@ -17,7 +17,6 @@ resource "aws_cloudwatch_metric_alarm" "errors" {
   }
 }
 
-
 resource "aws_cloudwatch_metric_alarm" "duration-minimum" {
   alarm_name          = "${var.alarm_prefix}: Duration of execution is to short for ${var.function_name}"
   comparison_operator = "LessThanOrEqualToThreshold"
