@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_metric_alarm" "errors" {
-  alarm_name          = "${var.alarm_prefix}: Count of invocation errors are to high"
+  alarm_name          = "${var.alarm_prefix}: Count of invocation errors are to high for ${var.function_name}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = var.errors_evaluation_periods
   threshold           = var.errors_threshold
@@ -13,13 +13,13 @@ resource "aws_cloudwatch_metric_alarm" "errors" {
   tags                = var.tags
 
   dimensions = {
-    FunctionName = data.aws_lambda_function.lambda.function_name
+    FunctionName = var.function_name
   }
 }
 
 
 resource "aws_cloudwatch_metric_alarm" "duration-minimum" {
-  alarm_name          = "${var.alarm_prefix}: Duration of execution is to short"
+  alarm_name          = "${var.alarm_prefix}: Duration of execution is to short for ${var.function_name}"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = var.duration_minimum_evaluation_periods
   threshold           = var.duration_minimum_threshold
@@ -33,12 +33,12 @@ resource "aws_cloudwatch_metric_alarm" "duration-minimum" {
   tags                = var.tags
 
   dimensions = {
-    FunctionName = data.aws_lambda_function.lambda.function_name
+    FunctionName = var.function_name
   }
 }
 
 resource "aws_cloudwatch_metric_alarm" "duration-high" {
-  alarm_name          = "${var.alarm_prefix}: Duration of execution is to high"
+  alarm_name          = "${var.alarm_prefix}: Duration of execution is to high for ${var.function_name}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = var.duration_maximum_evaluation_periods
   threshold           = var.duration_maximum_threshold
@@ -52,6 +52,6 @@ resource "aws_cloudwatch_metric_alarm" "duration-high" {
   tags                = var.tags
 
   dimensions = {
-    FunctionName = data.aws_lambda_function.lambda.function_name
+    FunctionName = var.function_name
   }
 }
