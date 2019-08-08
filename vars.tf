@@ -48,7 +48,8 @@ variable "duration_minimum_period" {
 
 variable "duration_maximum_threshold" {
   type    = number
-  default = 30
+  default = 30*1000
+  description = "In MS"
 }
 
 variable "duration_maximum_evaluation_periods" {
