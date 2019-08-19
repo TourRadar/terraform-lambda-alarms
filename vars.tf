@@ -2,6 +2,13 @@ variable "actions" {
   description = "List of actions what should be executed"
   type        = list(string)
 }
+
+variable "ok_actions" {
+  description = "List of actions what should be executed"
+  type        = list(string)
+  default     = []
+}
+
 variable "function_name" {
   type = string
 }
@@ -13,6 +20,12 @@ variable "alarm_prefix" {
 variable "tags" {
   default = {}
 }
+
+variable "errors_enabled" {
+  type    = bool
+  default = true
+}
+
 
 variable "errors_threshold" {
   type    = number
@@ -30,6 +43,18 @@ variable "errors_period" {
 }
 
 
+variable "errors_treat_missing_data" {
+  type    = string
+  default = "notBreaching"
+}
+
+
+
+variable "duration_minimum_enabled" {
+  type    = bool
+  default = true
+}
+
 variable "duration_minimum_threshold" {
   type    = number
   default = 0
@@ -45,10 +70,20 @@ variable "duration_minimum_period" {
   default = 60
 }
 
+variable "duration_minimum_treat_missing_data" {
+  type    = string
+  default = "notBreaching"
+}
+
+
+variable "duration_maximum_enabled" {
+  type    = bool
+  default = true
+}
 
 variable "duration_maximum_threshold" {
-  type    = number
-  default = 30*1000
+  type        = number
+  default     = 30 * 1000
   description = "In MS"
 }
 
@@ -60,4 +95,9 @@ variable "duration_maximum_evaluation_periods" {
 variable "duration_maximum_period" {
   type    = number
   default = 60
+}
+
+variable "duration_maximum_treat_missing_data" {
+  type    = string
+  default = "notBreaching"
 }
