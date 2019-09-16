@@ -23,7 +23,7 @@ resource "aws_cloudwatch_metric_alarm" "errors" {
 
 resource "aws_cloudwatch_metric_alarm" "throttles" {
   for_each            = var.throttles_checks
-  alarm_name          = "${var.alarm_prefix}: ${each.key} Count of invocation errors are to high for ${var.function_name}"
+  alarm_name          = "${var.alarm_prefix}: ${each.key} Throttles limit reached ${var.function_name}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = var.throttles_evaluation_periods
   threshold           = each.value
