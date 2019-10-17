@@ -104,14 +104,16 @@ variable "duration_minimum_treat_missing_data" {
 }
 
 
-variable "duration_maximum_enabled" {
-  type    = bool
-  default = true
-}
 
-variable "duration_maximum_threshold" {
-  type        = number
-  default     = 30 * 1000
+variable "duration_maximum_checks" {
+  type = map(number)
+  default = {
+    P1 = 50 * 1000
+    P2 = 45 * 1000
+    P3 = 40 * 1000
+    P4 = 35 * 1000
+    P5 = 30 * 1000
+  }
   description = "In MS"
 }
 

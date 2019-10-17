@@ -64,16 +64,16 @@ resource "aws_cloudwatch_metric_alarm" "duration-minimum" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "duration-high" {
-  count               = var.duration_maximum_enabled ? 1 : 0
-  alarm_name          = "${var.alarm_prefix}: Duration of execution is to high for ${var.function_name}"
+  for_each            = var.duration_maximum_checks
+  alarm_name          = "${var.alarm_prefix}: ${each.key} Duration of execution is to high for ${var.function_name}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = var.duration_maximum_evaluation_periods
-  threshold           = var.duration_maximum_threshold
+  threshold           = each.value
   metric_name         = "Duration"
   namespace           = "AWS/Lambda"
   period              = var.duration_maximum_period
   statistic           = "Average"
-  alarm_description   = "Execution duration is to high, above threshold: ${var.duration_maximum_threshold}"
+  alarm_description   = "Priority: ${each.key} Execution duration is to high, above threshold: ${each.value}"
   treat_missing_data  = var.duration_maximum_treat_missing_data
   alarm_actions       = var.actions
   ok_actions          = var.ok_actions
