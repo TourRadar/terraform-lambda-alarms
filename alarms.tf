@@ -44,7 +44,7 @@ resource "aws_cloudwatch_metric_alarm" "throttles" {
 
 resource "aws_cloudwatch_metric_alarm" "duration-minimum" {
   count               = var.duration_minimum_enabled ? 1 : 0
-  alarm_name          = "${var.alarm_prefix}: Duration of execution is to short for ${var.function_name}"
+  alarm_name          = "${var.alarm_prefix}: Duration of execution is short for ${var.function_name}"
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = var.duration_minimum_evaluation_periods
   threshold           = var.duration_minimum_threshold
@@ -65,7 +65,7 @@ resource "aws_cloudwatch_metric_alarm" "duration-minimum" {
 
 resource "aws_cloudwatch_metric_alarm" "duration-high" {
   for_each            = var.duration_maximum_checks
-  alarm_name          = "${var.alarm_prefix}: ${each.key} Duration of execution is to high for ${var.function_name}"
+  alarm_name          = "${var.alarm_prefix}: ${each.key} Duration of execution is high for ${var.function_name}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = var.duration_maximum_evaluation_periods
   threshold           = each.value
