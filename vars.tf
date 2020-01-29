@@ -28,8 +28,6 @@ variable "errors_checks" {
     P1 = 5
     P2 = 4
     P3 = 3
-    P4 = 2
-    P5 = 1
   }
 }
 
@@ -56,8 +54,6 @@ variable "throttles_checks" {
     P1 = 5
     P2 = 4
     P3 = 3
-    P4 = 2
-    P5 = 1
   }
 }
 
@@ -111,8 +107,6 @@ variable "duration_maximum_checks" {
     P1 = 50 * 1000
     P2 = 45 * 1000
     P3 = 40 * 1000
-    P4 = 35 * 1000
-    P5 = 30 * 1000
   }
   description = "In MS"
 }
